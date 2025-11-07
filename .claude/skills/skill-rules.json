@@ -1,30 +1,32 @@
 {
   "version": "1.0",
-  "description": "Skill activation triggers for Claude Code. Controls when skills automatically suggest or block actions.",
+  "description": "Claude Code 스킬 활성화 트리거. 스킬이 자동으로 제안되거나 작업을 차단하는 시점을 제어합니다.",
   "skills": {
     "skill-developer": {
       "type": "domain",
       "enforcement": "suggest",
       "priority": "high",
-      "description": "Meta-skill for creating and managing Claude Code skills",
+      "description": "Claude Code 스킬, 훅, 에이전트, 명령어를 생성하고 관리하기 위한 메타 스킬",
       "promptTriggers": {
         "keywords": [
-          "skill system",
-          "create skill",
-          "add skill",
-          "skill triggers",
-          "skill rules",
-          "hook system",
-          "skill development",
+          "스킬 시스템",
+          "스킬 생성",
+          "스킬 추가",
+          "스킬 트리거",
+          "스킬 규칙",
+          "훅 시스템",
+          "스킬 개발",
           "skill-rules.json",
-          "claude skill",
-          "skill configuration"
+          "클로드 스킬",
+          "스킬 설정",
+          "스킬 만들기",
+          "스킬 구성"
         ],
         "intentPatterns": [
-          "(how do|how does|explain).*?skill",
-          "(create|add|modify|build).*?skill",
-          "skill.*?(work|trigger|activate|system)",
-          "(setup|configure).*?skill"
+          "(어떻게|어떤|설명).*?스킬",
+          "(만들|추가|수정|구축|생성).*?스킬",
+          "스킬.*?(작동|트리거|활성화|시스템)",
+          "(설정|구성).*?스킬"
         ]
       },
       "fileTriggers": {
@@ -47,37 +49,40 @@
       "type": "domain",
       "enforcement": "suggest",
       "priority": "high",
-      "description": "Next.js 15 development guidelines with React 19, TypeScript, Shadcn/ui, and Tailwind CSS best practices",
+      "description": "Next.js 15 개발 가이드라인. React 19, TypeScript, Shadcn/ui, Tailwind CSS 모범 사례 포함",
       "promptTriggers": {
         "keywords": [
-          "component",
-          "react component",
+          "컴포넌트",
+          "리액트 컴포넌트",
           "UI",
-          "interface",
-          "page",
-          "modal",
-          "dialog",
-          "form",
+          "인터페이스",
+          "페이지",
+          "모달",
+          "다이얼로그",
+          "폼",
           "shadcn",
           "tailwind",
-          "styling",
-          "frontend",
+          "스타일링",
+          "프론트엔드",
           "React",
           "Next.js",
-          "server component",
-          "client component",
+          "서버 컴포넌트",
+          "클라이언트 컴포넌트",
           "app router",
-          "server action",
-          "route",
-          "layout",
-          "metadata"
+          "서버 액션",
+          "라우트",
+          "레이아웃",
+          "메타데이터",
+          "컴포넌트 만들기",
+          "페이지 만들기",
+          "라우트 만들기"
         ],
         "intentPatterns": [
-          "(create|add|make|build|update|modify|edit).*?(component|UI|page|modal|dialog|form|route)",
-          "(how to|best practice).*?(component|react|next|shadcn|tailwind)",
-          "(style|design|layout).*?(component|UI)",
-          "(server|client).*?component",
-          "app router.*?(page|route|layout)"
+          "(만들|추가|생성|구축|수정|편집).*?(컴포넌트|UI|페이지|모달|다이얼로그|폼|라우트)",
+          "(어떻게|모범 사례|베스트 프랙티스).*?(컴포넌트|react|next|shadcn|tailwind)",
+          "(스타일|디자인|레이아웃).*?(컴포넌트|UI)",
+          "(서버|클라이언트).*?컴포넌트",
+          "app router.*?(페이지|라우트|레이아웃)"
         ]
       },
       "fileTriggers": {

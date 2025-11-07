@@ -1,6 +1,6 @@
 ---
 name: frontend-dev-guidelines
-description: Frontend development guidelines for Next.js 15 applications with React 19, TypeScript, Shadcn/ui, and Tailwind CSS. Modern patterns including Server Components, Client Components, App Router, file organization, Shadcn/ui components, performance optimization, and TypeScript best practices. Use when creating components, pages, features, fetching data, styling, routing, or working with frontend code.
+description: Next.js 15 애플리케이션을 위한 프론트엔드 개발 가이드라인. React 19, TypeScript, Shadcn/ui, Tailwind CSS를 사용한 모던 패턴. Server Components, Client Components, App Router, 파일 구조, Shadcn/ui 컴포넌트, 성능 최적화, TypeScript 모범 사례 포함. 컴포넌트, 페이지, 기능 생성, 데이터 페칭, 스타일링, 라우팅, 프론트엔드 코드 작업 시 사용.
 ---
 
 # Frontend Development Guidelines

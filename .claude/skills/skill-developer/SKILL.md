@@ -1,6 +1,6 @@
 ---
 name: skill-developer
-description: Meta-skill for creating and managing Claude Code skills, hooks, agents, and commands. Use when creating new skills, configuring skill triggers, setting up hooks, or managing Claude Code infrastructure.
+description: Claude Code 스킬, 훅, 에이전트, 명령어를 생성하고 관리하기 위한 메타 스킬. 새 스킬 생성, 스킬 트리거 설정, 훅 설정, Claude Code 인프라 관리 시 사용.
 ---
 
 # Skill Developer Guide
@@ -26,11 +26,13 @@ Comprehensive guide for creating and managing Claude Code skills, hooks, agents,
 ### Creating a New Skill
 
 1. **Create skill directory**:
+
    ```bash
    mkdir -p .claude/skills/{skill-name}
    ```
 
 2. **Create SKILL.md file**:
+
    - Add frontmatter with `name` and `description`
    - Write comprehensive guidelines
    - Use progressive disclosure (main file + resources/)
@@ -105,9 +107,9 @@ Use glob patterns to match file paths:
 ```json
 {
   "pathPatterns": [
-    "app/**/*.tsx",        // All .tsx files in app/
-    "components/**/*.ts",  // All .ts files in components/
-    "**/*.tsx"             // All .tsx files anywhere
+    "app/**/*.tsx", // All .tsx files in app/
+    "components/**/*.ts", // All .ts files in components/
+    "**/*.tsx" // All .tsx files anywhere
   ]
 }
 ```
@@ -119,9 +121,9 @@ Exclude files from triggering:
 ```json
 {
   "pathExclusions": [
-    "**/*.test.tsx",       // Test files
-    "**/node_modules/**",  // Dependencies
-    "**/.next/**"          // Build output
+    "**/*.test.tsx", // Test files
+    "**/node_modules/**", // Dependencies
+    "**/.next/**" // Build output
   ]
 }
 ```
@@ -133,9 +135,9 @@ Match file content with regex:
 ```json
 {
   "contentPatterns": [
-    "from '@/components/ui/",  // Shadcn imports
-    "import.*from.*next",      // Next.js imports
-    "'use client'"             // Client component directive
+    "from '@/components/ui/", // Shadcn imports
+    "import.*from.*next", // Next.js imports
+    "'use client'" // Client component directive
   ]
 }
 ```
@@ -150,12 +152,7 @@ Simple keyword matching:
 
 ```json
 {
-  "keywords": [
-    "component",
-    "page",
-    "route",
-    "frontend"
-  ]
+  "keywords": ["component", "page", "route", "frontend"]
 }
 ```
 
@@ -166,9 +163,9 @@ Regex patterns for flexible matching:
 ```json
 {
   "intentPatterns": [
-    "(create|add|make|build).*?component",  // Create component
-    "(how to|best practice).*?react",       // How to questions
-    "app router.*?(page|route)"              // App router related
+    "(create|add|make|build).*?component", // Create component
+    "(how to|best practice).*?react", // How to questions
+    "app router.*?(page|route)" // App router related
   ]
 }
 ```
@@ -300,4 +297,3 @@ When adding a new skill:
 ---
 
 **Skill Status**: Meta-skill for skill development and management
-
