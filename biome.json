@@ -12,6 +12,7 @@
       "!**/public",
       "!**/.vercel",
       "!**/playwright-report",
+      "!**/dev",
       "!**/components/ui",
       "!**/types/api.ts",
       "!**/packages/**/*",

@@ -118,6 +118,15 @@ Husky `^9.1.7` 사용. Git hooks는 `.husky/` 디렉토리에 저장됩니다.
 pnpm husky init
 ```
 
+### 개발 문서 시스템 (Dev Docs System)
+
+큰 작업이나 기능 개발 시 Claude가 작업 맥락을 잃지 않도록 하기 위한 문서화 시스템입니다.
+
+**상세한 가이드는 [`.dev/README.md`](.dev/README.md)를 참조하세요.**
+
+- **사용 시기**: 복잡한 멀티데이 작업, 여러 세션에 걸치는 작업
+- **파일 구조**: `.dev/active/[작업-이름]/` 디렉토리에 `plan.md`, `context.md`, `tasks.md` 생성
+
 ## 추가 워크플로우 팁
 
 ### 주요 라이브러리
