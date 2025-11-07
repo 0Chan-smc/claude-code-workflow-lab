@@ -18,36 +18,11 @@ pnpm start
 
 # 린트 실행
 pnpm lint
+
+# Biome 포맷팅 및 린트
+pnpm format
+pnpm check:fix
 ```
-
-### Production Management (PM2)
-
-```bash
-# PM2로 프로덕션 서버 시작
-pnpm pm2:start
-
-# PM2 상태 확인
-pnpm pm2:status
-
-# PM2 로그 확인
-pnpm pm2:logs
-
-# PM2 재시작
-pnpm pm2:restart
-
-# PM2 중지
-pnpm pm2:stop
-```
-
-> **Note**: PM2 스크립트는 `package.json`에 추가해야 합니다. 예시:
->
-> ```json
-> "pm2:start": "pm2 start ecosystem.config.js",
-> "pm2:stop": "pm2 stop ecosystem.config.js",
-> "pm2:restart": "pm2 restart ecosystem.config.js",
-> "pm2:status": "pm2 status",
-> "pm2:logs": "pm2 logs"
-> ```
 
 ## Service-Specific Configuration
 
@@ -118,6 +93,103 @@ shadcn/ui 스타일이 포함되어 있으며, CSS 변수를 통해 테마를 �
 - CSS variables 사용
 - Icon library: `lucide`
 
+### Biome Configuration
+
+**파일**: `biome.json`
+
+이 프로젝트는 Biome을 linter와 formatter로 사용합니다.
+
+#### 주요 설정
+
+- **Formatter**: 활성화됨
+
+  - Indent: 2 spaces
+  - Line width: 80
+  - Line ending: LF
+  - Attribute position: auto
+
+- **Linter**: 활성화됨
+
+  - Style 규칙: 엄격한 코딩 스타일 적용
+  - A11y 규칙: 접근성 경고 활성화
+  - Correctness 규칙: 정확성 검사
+  - Nursery 규칙: 실험적 규칙 포함
+
+- **JavaScript 설정**:
+
+  - JSX Runtime: `reactClassic`
+  - Quote style: `single`
+  - JSX Quote style: `double`
+  - Semicolons: `always`
+  - Trailing commas: `all`
+
+- **JSON 설정**:
+
+  - Comments 허용: `true`
+  - Trailing commas: `false`
+
+- **CSS**: Formatter 및 Linter 비활성화
+
+- **Import 정리**: 자동 활성화 (`organizeImports: on`)
+
+#### 제외된 파일/디렉토리
+
+다음 항목들은 Biome 검사에서 제외됩니다:
+
+- `node_modules/`
+- `.next/`
+- `public/`
+- `.vercel/`
+- `playwright-report/`
+- `components/ui/` (shadcn/ui 컴포넌트)
+- `types/api.ts`
+- `packages/**/*`
+- `terraform/`
+- `pnpm-lock.yaml`
+- `lib/db/migrations`
+- `lib/editor/react-renderer.tsx`
+
+#### Biome 명령어
+
+**package.json 스크립트 사용 (권장)**:
+
+```bash
+# 코드 포맷팅 (자동 수정)
+pnpm format
+
+# 코드 포맷팅 검사만 (수정 안 함)
+pnpm format:check
+
+# 린트 검사 (수정 안 함)
+pnpm check
+
+# 린트 검사 및 자동 수정
+pnpm check:fix
+```
+
+**직접 명령어 사용**:
+
+```bash
+# 특정 파일만 검사
+pnpm biome check app/page.tsx
+
+# 설정 검증
+pnpm biome check --config-path=biome.json biome.json
+```
+
+#### Override 설정
+
+Playwright 테스트 파일에 대해서는 특별한 규칙이 적용됩니다:
+
+- `**/playwright/**` 경로의 파일들
+- `noEmptyPattern` 규칙 비활성화 (Playwright 요구사항)
+
+#### 주의사항
+
+- Biome 설정 파일(`biome.json`) 자체는 JSON 주석을 지원하지 않습니다.
+- 다른 JSON 파일들은 `json.parser.allowComments: true` 설정으로 주석을 사용할 수 있습니다.
+- CSS 파일은 Biome의 포맷팅/린팅 대상에서 제외됩니다.
+
 ## Task Management Workflow
 
 ### Development Documentation System
@@ -154,6 +226,7 @@ git commit -m "feat: your feature description"
 # 메인 브랜치로 병합 전 테스트
 pnpm test
 pnpm lint
+pnpm check
 pnpm build
 ```
 
@@ -235,11 +308,20 @@ pnpm tsc --noEmit
 ### 린트 검증
 
 ```bash
-# 린트만 실행 (자동 수정 안 함)
+# Next.js 린트 실행 (자동 수정 안 함)
 pnpm lint
 
-# 자동 수정 가능한 문제만 수정
-pnpm lint --fix
+# Biome 포맷팅 검사 (수정 안 함)
+pnpm format:check
+
+# Biome 포맷팅 실행 (자동 수정)
+pnpm format
+
+# Biome 린트 검사 (수정 안 함)
+pnpm check
+
+# Biome 린트 검사 및 자동 수정
+pnpm check:fix
 ```
 
 ### 환경 변수 검증
@@ -302,13 +384,7 @@ pnpm dev --hostname 0.0.0.0
 
 ### 컴포넌트 개발
 
-1. shadcn/ui 컴포넌트 추가:
-
-   ```bash
-   npx shadcn@latest add [component-name]
-   ```
-
-2. 커스텀 컴포넌트 위치:
+1. 커스텀 컴포넌트 위치:
    - `components/ui/`: shadcn/ui 컴포넌트
    - `components/`: 프로젝트 커스텀 컴포넌트
 
